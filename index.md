@@ -10,7 +10,7 @@ My GitHub page is http://github.com/ivan-grebe.
 
 * Lab 9
 
-    Lab 9, part 1 was fun because I got to create a functioning spellcheck that would work if I used it on any one of my papers I wrote.
+    Lab 9, part 1 was fun because I got to create a functioning spellcheck that would work if I used it on any one of my papers I wrote. I also got stuck for a while because I put a return in the wrong spot so it was a good learning experience.
 
 * Lab 8
 
