@@ -12,7 +12,6 @@
             font-weight: 400;
             src: url('https://fonts.gstatic.com/s/courierprime/v9/u-450q2lgwslOqpF_6gQ8kELWwZjW-_-tvg.woff2') format('woff2');
         }
-        
         @font-face {
             font-family: 'Courier Prime';
             font-style: normal;
@@ -20,11 +19,7 @@
             src: url('https://fonts.gstatic.com/s/courierprime/v9/u-4k0q2lgwslOqpF_6gQ8kELY7pMf-fVqvHoJXw.woff2') format('woff2');
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Courier Prime', 'Courier New', monospace;
@@ -32,176 +27,114 @@
             color: #fff;
             line-height: 1.7;
             min-height: 100vh;
+            overflow: hidden; /* Prevents drift scrollbars */
         }
 
-        body.custom-cursor {
-            cursor: none;
-        }
+        body.custom-cursor { cursor: none; }
+        a { color: #fff; text-decoration: none; transition: color 0.2s ease; }
+        a:hover { color: #888; }
 
-        a {
-            color: #fff;
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
+        header { max-width: 42rem; margin: 0 auto; padding: 3rem 1.5rem 0; }
+        nav { display: flex; align-items: center; justify-content: space-between; }
+        .logo { font-size: 1.25rem; font-weight: 700; }
+        .nav-links { display: flex; align-items: center; gap: 1.5rem; }
+        .social-links { display: flex; align-items: center; gap: 1rem; }
+        svg { width: 22px; height: 22px; fill: currentColor; }
+        .x-icon { font-size: 1.25rem; font-weight: 700; }
+        hr { margin-top: 1.5rem; border: none; border-top: 1px solid rgba(255, 255, 255, 0.2); }
+        
+        main { max-width: 42rem; margin: 0 auto; padding: 3rem 1.5rem; }
+        .content { display: flex; flex-direction: column; gap: 2rem; }
+        section { display: flex; flex-direction: column; gap: 1.5rem; }
+        blockquote { margin-top: 2rem; border-left: 2px solid #fff; padding-left: 1.5rem; margin-left: 1rem; max-width: 28rem; }
+        blockquote p { font-style: italic; }
 
-        a:hover {
-            color: #888;
-        }
-
-        header {
-            max-width: 42rem;
-            margin: 0 auto;
-            padding: 3rem 1.5rem 0;
-        }
-
-        nav {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            font-size: 1.25rem;
-            font-weight: 700;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .social-links {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        hr {
-            margin-top: 1.5rem;
-            border: none;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        main {
-            max-width: 42rem;
-            margin: 0 auto;
-            padding: 3rem 1.5rem;
-        }
-
-        .content {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        section {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        blockquote {
-            margin-top: 2rem;
-            border-left: 2px solid #fff;
-            padding-left: 1.5rem;
-            margin-left: 1rem;
-            max-width: 28rem;
-        }
-
-        blockquote p {
-            font-style: italic;
-        }
-
-        svg {
-            width: 22px;
-            height: 22px;
-            fill: currentColor;
-        }
-
-        .x-icon {
-            font-size: 1.25rem;
-            font-weight: 700;
-        }
-
-        /* Custom Cursor */
+        /* Cursor & Trail */
         #cursor {
-            width: 48px;
-            height: 48px;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            transition: transform 0.1s ease;
-            transform-origin: top left;
-            opacity: 0;
+            width: 48px; height: 48px; position: fixed; pointer-events: none; z-index: 20000;
+            transition: transform 0.1s ease; transform-origin: top left; opacity: 0;
         }
-
         body.custom-cursor #cursor { opacity: 1; }
         #cursor img { width: 100%; height: 100%; image-rendering: pixelated; }
         #cursor.hover { transform: scale(1.2); }
-        body.custom-cursor a, body.custom-cursor button { cursor: none; }
+        body.custom-cursor a, body.custom-cursor button, body.custom-cursor #cookie-button { cursor: none !important; }
 
-        /* Video Styles */
-        .random-video {
-            display: none;
-            position: fixed;
-            height: auto;
-            object-fit: contain;
-            border: none;
-            outline: none;
-            box-shadow: none;
+        .trail-item {
+            position: fixed; pointer-events: none; z-index: 19999;
+            width: 24px; height: 24px; animation: fadeOut 0.8s forwards;
         }
+        .trail-item img { width: 100%; height: 100%; image-rendering: pixelated; }
+
+        @keyframes fadeOut {
+            0% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+            100% { opacity: 0; transform: translate(-50%, -50%) scale(0.5) translateY(20px); }
+        }
+
+        /* Overstimulation Elements */
+        .random-video, .jobs-img { display: none; position: fixed; height: auto; object-fit: contain; }
         #babyboo-video { z-index: 9998; }
         #slime-video { z-index: 9997; }
         #beast-video { z-index: 9996; }
+        .jobs-img { z-index: 9994; max-width: 300px; pointer-events: none; }
 
-        /* Hire Me Block Styles */
+        #subway-pane {
+            display: none; position: fixed; right: 0; top: 0; bottom: 0;
+            width: 400px; z-index: 9995; border-left: 3px solid #fff;
+        }
+        #subway-video { width: 100%; height: 100%; object-fit: cover; }
+
         #hire-me-container {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 10000;
-            text-align: center;
+            display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            z-index: 10000; text-align: center;
         }
-        .hire-text {
-            color: red;
-            font-size: 6rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            white-space: nowrap;
-        }
-        .arrow {
-            position: absolute;
-            width: 180px; 
-            display: none;
-            pointer-events: none;
-        }
+        .hire-text { color: red; font-size: 6rem; font-weight: 900; text-transform: uppercase; white-space: nowrap; }
+        .arrow { position: absolute; width: 180px; display: none; pointer-events: none; }
 
+        #cookie-container { display: none; position: fixed; z-index: 10001; text-align: center; width: 300px; }
+        #cookie-button {
+            background: none; border: none; font-size: 10rem;
+            transition: transform 0.1s; animation: pulse 2s infinite;
+        }
+        #cookie-button:active { transform: scale(0.9); }
+        #cookie-count { font-weight: bold; font-size: 1.5rem; display: block; }
+
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+        .goon-style { font-size: 5rem; font-weight: 900; display: block; line-height: 1; color: #ff00ff; }
+
+        @media (max-width: 1024px) { #subway-pane { width: 250px; } }
         @media (max-width: 768px) {
             nav { flex-direction: column; gap: 1rem; }
             .nav-links { flex-direction: column; gap: 0.5rem; }
-            #cursor, .arrow { display: none; }
-            .hire-text { font-size: 3rem; }
+            #cursor, #subway-pane, .trail-item { display: none; }
+            .hire-text, .goon-style { font-size: 3rem; }
         }
     </style>
 </head>
 <body>
-    <div id="cursor">
-        <img src="assets/diamond-sword.png" alt="">
-    </div>
+    <div id="cursor"><img src="assets/diamond-sword.png"></div>
 
     <div id="hire-me-container">
-        <img src="assets/red_arrow.png" class="arrow" id="arrow-0" alt="">
-        <img src="assets/red_arrow.png" class="arrow" id="arrow-1" alt="">
-        <img src="assets/red_arrow.png" class="arrow" id="arrow-2" alt="">
+        <img src="assets/red_arrow.png" class="arrow" id="arrow-0">
+        <img src="assets/red_arrow.png" class="arrow" id="arrow-1">
+        <img src="assets/red_arrow.png" class="arrow" id="arrow-2">
         <div class="hire-text">HIRE ME!!!</div>
     </div>
 
-    <video id="babyboo-video" class="random-video" src="assets/babyboo.mp4" loop playsinline disablePictureInPicture controlsList="nopictureinpicture"></video>
-    <video id="slime-video" class="random-video" src="assets/slime.webm" loop playsinline disablePictureInPicture controlsList="nopictureinpicture"></video>
-    <video id="beast-video" class="random-video" src="assets/beast.webm" loop playsinline disablePictureInPicture controlsList="nopictureinpicture"></video>
+    <div id="subway-pane">
+        <video id="subway-video" src="assets/subway.webm" loop playsinline></video>
+    </div>
+
+    <div id="cookie-container">
+        <button id="cookie-button">🍪</button>
+        <div id="cookie-count">Clicks: 0</div>
+    </div>
+
+    <img id="jobs-1" class="jobs-img" src="assets/jobs.png">
+    <img id="jobs-2" class="jobs-img" src="assets/jobs.png">
+
+    <video id="babyboo-video" class="random-video" src="assets/babyboo.mp4" loop playsinline></video>
+    <video id="slime-video" class="random-video" src="assets/slime.webm" loop playsinline></video>
+    <video id="beast-video" class="random-video" src="assets/beast.webm" loop playsinline></video>
     
     <audio id="ding-sound" src="assets/ding.mp3"></audio>
 
@@ -229,7 +162,7 @@
     <main>
         <div class="content">
             <section>
-                <p>I'm trying to understand how to make worse decisions under certainty.</p>
+                <p id="bio-text">I'm trying to understand how to make worse decisions under certainty.</p>
                 <p>My interests include Fortnite, Arc Raiders, Looksmaxxing, gambling, inference, and poker.</p>
             </section>
             <section>
@@ -243,30 +176,63 @@
         const babyboo = document.getElementById('babyboo-video');
         const slime = document.getElementById('slime-video');
         const beast = document.getElementById('beast-video');
+        const subway = document.getElementById('subway-video');
+        const subwayPane = document.getElementById('subway-pane');
         const hireMe = document.getElementById('hire-me-container');
+        const cookieCont = document.getElementById('cookie-container');
+        const cookieBtn = document.getElementById('cookie-button');
+        const jobs1 = document.getElementById('jobs-1');
+        const jobs2 = document.getElementById('jobs-2');
+        const bioText = document.getElementById('bio-text');
         const ding = document.getElementById('ding-sound');
         
         let customCursorEnabled = false;
-        let mouseX = 0, mouseY = 0;
+        let mouseX = 0, mouseY = 0, clicks = 0;
+
+        function spawnTrail(x, y) {
+            if (!customCursorEnabled) return;
+            const trail = document.createElement('div');
+            trail.className = 'trail-item';
+            trail.innerHTML = '<img src="assets/jobs.png">';
+            trail.style.left = x + 'px'; trail.style.top = y + 'px';
+            document.body.appendChild(trail);
+            setTimeout(() => trail.remove(), 800);
+        }
+
+        function startDrift(el) {
+            let vx = (Math.random() - 0.5) * 4; let vy = (Math.random() - 0.5) * 4;
+            setInterval(() => {
+                let rect = el.getBoundingClientRect();
+                let x = rect.left + vx; let y = rect.top + vy;
+                if (x <= 0 || x + rect.width >= window.innerWidth) vx *= -1;
+                if (y <= 0 || y + rect.height >= window.innerHeight) vy *= -1;
+                el.style.left = (rect.left + vx) + 'px'; el.style.top = (rect.top + vy) + 'px';
+            }, 16);
+        }
 
         document.addEventListener('mousemove', (e) => {
             mouseX = e.clientX; mouseY = e.clientY;
-            if (customCursorEnabled) { cursor.style.left = mouseX + 'px'; cursor.style.top = mouseY + 'px'; }
+            if (customCursorEnabled) { 
+                cursor.style.left = mouseX + 'px'; cursor.style.top = mouseY + 'px'; spawnTrail(mouseX, mouseY); 
+            }
         });
 
         const dCursor = Math.floor(Math.random() * 6001) + 3000;
         const dBaby = Math.floor(Math.random() * 3001) + 3000;
         const dSlime = Math.floor(Math.random() * 4001) + 8000;
+        const dSubway = Math.floor(Math.random() * 5001) + 10000;
         const dBeast = Math.floor(Math.random() * 4001) + 14000;
         const dHire = Math.floor(Math.random() * 5001) + 20000;
+        const dCookie = Math.floor(Math.random() * 5001) + 25000;
+        const dGoon = Math.floor(Math.random() * 5001) + 32000;
+        const dJobs1 = Math.floor(Math.random() * 4001) + 38000;
+        const dJobs2 = Math.floor(Math.random() * 5001) + 45000;
 
-        setTimeout(() => {
-            cursor.style.left = mouseX + 'px'; cursor.style.top = mouseY + 'px';
-            document.body.classList.add('custom-cursor'); customCursorEnabled = true;
-        }, dCursor);
+        setTimeout(() => { document.body.classList.add('custom-cursor'); customCursorEnabled = true; }, dCursor);
 
         const unlockAudio = () => {
             [babyboo, slime, beast].forEach(v => { if(v.style.display === 'block') v.play(); });
+            if(subwayPane.style.display === 'block') { subway.volume = 0.5; subway.play(); }
             window.removeEventListener('click', unlockAudio);
         };
         window.addEventListener('click', unlockAudio);
@@ -275,31 +241,29 @@
             return !(r1.right < r2.left || r1.left > r2.right || r1.bottom < r2.top || r1.top > r2.bottom);
         }
 
-        function positionVideo(video, otherVideos) {
-            // Volume reduced to 0.02
-            if (video.id === 'beast-video') video.volume = 0.02;
-            
-            // Slime minimum size set to 50%
+        function positionUIElement(el, avoidList, customW = null) {
+            if (el.id === 'beast-video') el.volume = 0.02;
             let minW = 150;
-            if (video.id === 'beast-video') minW = window.innerWidth * 0.4;
-            if (video.id === 'slime-video') minW = window.innerWidth * 0.5;
+            if (el.id === 'beast-video') minW = window.innerWidth * 0.4;
+            if (el.id === 'slime-video') minW = window.innerWidth * 0.5;
+            if (el.classList.contains('jobs-img')) minW = 200;
 
             const safeMaxW = Math.min(window.innerWidth * 0.8, (window.innerHeight * 0.8) / 1.77);
             const actualMinW = Math.min(minW, safeMaxW);
-            const rWidth = Math.floor(Math.random() * (safeMaxW - actualMinW + 1)) + actualMinW;
+            const rWidth = customW || (Math.floor(Math.random() * (safeMaxW - actualMinW + 1)) + actualMinW);
+            el.style.width = rWidth + 'px'; el.style.display = 'block';
             
-            video.style.width = rWidth + 'px';
-            video.style.display = 'block';
-            
-            const rect = video.getBoundingClientRect();
+            const rect = el.getBoundingClientRect();
             let attempts = 0, x, y;
+            const boundaryX = window.innerWidth - (subwayPane.style.display === 'block' ? 450 : 150);
+            
             do {
-                x = Math.floor(Math.random() * (window.innerWidth - rect.width));
+                x = Math.floor(Math.random() * (boundaryX - rect.width));
                 y = Math.floor(Math.random() * (window.innerHeight - rect.height));
-                video.style.left = x + 'px'; video.style.top = y + 'px';
+                el.style.left = x + 'px'; el.style.top = y + 'px';
                 let overlap = false;
-                for (const other of otherVideos) {
-                    if (window.getComputedStyle(other).display !== 'none' && isOverlapping(video.getBoundingClientRect(), other.getBoundingClientRect())) {
+                for (const other of avoidList) {
+                    if (window.getComputedStyle(other).display !== 'none' && isOverlapping(el.getBoundingClientRect(), other.getBoundingClientRect())) {
                         overlap = true; break;
                     }
                 }
@@ -307,46 +271,44 @@
                 attempts++;
             } while (attempts < 50);
 
-            // Always plays even if overlapping spots couldn't be found
-            video.play().catch(() => {});
+            const s = ding.cloneNode(true); s.play().catch(() => {});
+            if (el.tagName === 'VIDEO') el.play().catch(() => {});
+            if (el.classList.contains('jobs-img')) startDrift(el);
         }
 
-        setTimeout(() => positionVideo(babyboo, [slime, beast]), dBaby);
-        setTimeout(() => positionVideo(slime, [babyboo, beast]), dSlime);
-        setTimeout(() => positionVideo(beast, [babyboo, slime]), dBeast);
+        const currentActive = () => [babyboo, slime, beast, cookieCont, jobs1, jobs2];
+
+        setTimeout(() => positionUIElement(babyboo, currentActive()), dBaby);
+        setTimeout(() => positionUIElement(slime, currentActive()), dSlime);
+        setTimeout(() => positionUIElement(beast, currentActive()), dBeast);
+        setTimeout(() => { 
+            subwayPane.style.display = 'block'; subway.volume = 0.5; subway.play().catch(() => {}); 
+            const s = ding.cloneNode(true); s.play();
+        }, dSubway);
         
-        // Random Arrow Logic
         setTimeout(() => {
             hireMe.style.display = 'block';
             const arrows = hireMe.querySelectorAll('.arrow');
-            
-            const showRandomArrow = (index, delay) => {
+            const showArrow = (index, delay) => {
                 setTimeout(() => {
                     const arrow = arrows[index];
-                    const angle = Math.random() * Math.PI * 2;
-                    const radius = Math.floor(Math.random() * 101) + 250;
-                    
-                    const x = Math.cos(angle) * radius;
-                    const y = Math.sin(angle) * radius;
-                    
-                    // Since original points LEFT (180 deg), we subtract 180 to correct the orientation
-                    const angleToCenter = Math.atan2(-y, -x) * (180 / Math.PI);
-                    const rot = angleToCenter - 180;
-                    
-                    arrow.style.left = `calc(50% + ${x}px)`;
-                    arrow.style.top = `calc(50% + ${y}px)`;
+                    const angle = (index * (2 * Math.PI / 3)) + ((Math.random() * (Math.PI / 2)) - (Math.PI / 4));
+                    const x = Math.cos(angle) * 180; const y = Math.sin(angle) * 180;
+                    const rot = (Math.atan2(-y, -x) * (180 / Math.PI)) - 180;
+                    arrow.style.left = `calc(50% + ${x}px)`; arrow.style.top = `calc(50% + ${y}px)`;
                     arrow.style.transform = `translate(-50%, -50%) rotate(${rot}deg)`;
                     arrow.style.display = 'block';
-
-                    const s = ding.cloneNode(true);
-                    s.play().catch(() => {});
+                    const s = ding.cloneNode(true); s.play();
                 }, delay);
             };
-
-            showRandomArrow(0, 0);
-            showRandomArrow(1, 600);
-            showRandomArrow(2, 1200);
+            showArrow(0, 0); showArrow(1, 600); showArrow(2, 1200);
         }, dHire);
+
+        setTimeout(() => positionUIElement(cookieCont, currentActive(), 300), dCookie);
+        cookieBtn.addEventListener('click', () => { clicks++; document.getElementById('cookie-count').innerText = `Clicks: ${clicks}`; });
+        setTimeout(() => { bioText.innerHTML = 'I\'m trying to understand how to <span class="goon-style">GOON!!!!!!!</span>'; const s = ding.cloneNode(true); s.play(); }, dGoon);
+        setTimeout(() => positionUIElement(jobs1, currentActive()), dJobs1);
+        setTimeout(() => positionUIElement(jobs2, currentActive()), dJobs2);
 
         document.querySelectorAll('a, button').forEach(el => {
             el.addEventListener('mouseenter', () => { if (customCursorEnabled) cursor.classList.add('hover'); });
