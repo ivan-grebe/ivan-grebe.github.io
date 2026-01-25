@@ -132,7 +132,8 @@
             pointer-events: none;
             z-index: 9999;
             transition: transform 0.1s ease;
-            transform: translate(-50%, -50%) rotate(-45deg);
+            /* Changed: Removed translate and rotate. Added transform-origin. */
+            transform-origin: top left;
             opacity: 0;
         }
 
@@ -149,7 +150,8 @@
         }
 
         #cursor.hover {
-            transform: translate(-50%, -50%) rotate(-45deg) scale(1.2);
+            /* Changed: Removed translate and rotate, kept scale. */
+            transform: scale(1.2);
         }
 
         body.custom-cursor a,
