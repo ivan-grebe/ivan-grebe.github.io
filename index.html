@@ -120,6 +120,43 @@
             font-weight: 700;
         }
 
+        /* Custom Cursor Styles */
+        body.custom-cursor {
+            cursor: none;
+        }
+
+        #cursor {
+            width: 48px;
+            height: 48px;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            opacity: 0;
+        }
+
+        body.custom-cursor #cursor {
+            opacity: 1;
+        }
+
+        #cursor img {
+            width: 100%;
+            height: 100%;
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+        }
+
+        #cursor.hover {
+            transform: translate(-50%, -50%) rotate(-45deg) scale(1.2);
+        }
+
+        body.custom-cursor a,
+        body.custom-cursor button {
+            cursor: none;
+        }
+
         @media (max-width: 768px) {
             nav {
                 flex-direction: column;
@@ -130,10 +167,19 @@
                 flex-direction: column;
                 gap: 0.5rem;
             }
+
+            /* Hide custom cursor on mobile */
+            #cursor {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
+    <div id="cursor">
+        <img src="diamond-sword.png" alt="">
+    </div>
+    
     <header>
         <nav>
             <a href="/" class="logo">Ivan Grebe</a>
@@ -181,5 +227,42 @@
             </section>
         </div>
     </main>
+
+    <script>
+        // Custom Cursor Logic with 5-second delay
+        const cursor = document.getElementById('cursor');
+        let customCursorEnabled = false;
+        
+        // Enable custom cursor after 5 seconds
+        setTimeout(() => {
+            document.body.classList.add('custom-cursor');
+            customCursorEnabled = true;
+        }, 5000);
+        
+        // Update cursor position
+        document.addEventListener('mousemove', (e) => {
+            if (customCursorEnabled) {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            }
+        });
+
+        // Add hover effect on links and buttons
+        const hoverElements = document.querySelectorAll('a, button');
+        
+        hoverElements.forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                if (customCursorEnabled) {
+                    cursor.classList.add('hover');
+                }
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                if (customCursorEnabled) {
+                    cursor.classList.remove('hover');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
