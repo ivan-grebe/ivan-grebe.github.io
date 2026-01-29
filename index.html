@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +13,7 @@
             font-weight: 400;
             src: url('https://fonts.gstatic.com/s/courierprime/v9/u-450q2lgwslOqpF_6gQ8kELWwZjW-_-tvg.woff2') format('woff2');
         }
+
         @font-face {
             font-family: 'Courier Prime';
             font-style: normal;
@@ -19,7 +21,11 @@
             src: url('https://fonts.gstatic.com/s/courierprime/v9/u-4k0q2lgwslOqpF_6gQ8kELY7pMf-fVqvHoJXw.woff2') format('woff2');
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
             font-family: 'Courier Prime', 'Courier New', monospace;
@@ -27,90 +33,375 @@
             color: #fff;
             line-height: 1.7;
             min-height: 100vh;
-            overflow: hidden; /* Prevents drift scrollbars */
+            overflow: hidden;
+            /* Prevents drift scrollbars */
         }
 
-        body.custom-cursor { cursor: none; }
-        a { color: #fff; text-decoration: none; transition: color 0.2s ease; }
-        a:hover { color: #888; }
+        body.custom-cursor {
+            cursor: none;
+        }
 
-        header { max-width: 42rem; margin: 0 auto; padding: 3rem 1.5rem 0; }
-        nav { display: flex; align-items: center; justify-content: space-between; }
-        .logo { font-size: 1.25rem; font-weight: 700; }
-        .nav-links { display: flex; align-items: center; gap: 1.5rem; }
-        .social-links { display: flex; align-items: center; gap: 1rem; }
-        svg { width: 22px; height: 22px; fill: currentColor; }
-        .x-icon { font-size: 1.25rem; font-weight: 700; }
-        hr { margin-top: 1.5rem; border: none; border-top: 1px solid rgba(255, 255, 255, 0.2); }
-        
-        main { max-width: 42rem; margin: 0 auto; padding: 3rem 1.5rem; }
-        .content { display: flex; flex-direction: column; gap: 2rem; }
-        section { display: flex; flex-direction: column; gap: 1.5rem; }
-        blockquote { margin-top: 2rem; border-left: 2px solid #fff; padding-left: 1.5rem; margin-left: 1rem; max-width: 28rem; }
-        blockquote p { font-style: italic; }
+        a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: #888;
+        }
+
+        header {
+            max-width: 42rem;
+            margin: 0 auto;
+            padding: 3rem 1.5rem 0;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        svg {
+            width: 22px;
+            height: 22px;
+            fill: currentColor;
+        }
+
+        .x-icon {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        hr {
+            margin-top: 1.5rem;
+            border: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        main {
+            max-width: 42rem;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        section {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        blockquote {
+            margin-top: 2rem;
+            border-left: 2px solid #fff;
+            padding-left: 1.5rem;
+            margin-left: 1rem;
+            max-width: 28rem;
+        }
+
+        blockquote p {
+            font-style: italic;
+        }
 
         /* Cursor & Trail */
         #cursor {
-            width: 48px; height: 48px; position: fixed; pointer-events: none; z-index: 20000;
-            transition: transform 0.1s ease; transform-origin: top left; opacity: 0;
+            width: 48px;
+            height: 48px;
+            position: fixed;
+            pointer-events: none;
+            z-index: 20000;
+            transition: transform 0.1s ease;
+            transform-origin: top left;
+            opacity: 0;
         }
-        body.custom-cursor #cursor { opacity: 1; }
-        #cursor img { width: 100%; height: 100%; image-rendering: pixelated; }
-        #cursor.hover { transform: scale(1.2); }
-        body.custom-cursor a, body.custom-cursor button, body.custom-cursor #cookie-button { cursor: none !important; }
+
+        body.custom-cursor #cursor {
+            opacity: 1;
+        }
+
+        #cursor img {
+            width: 100%;
+            height: 100%;
+            image-rendering: pixelated;
+        }
+
+        #cursor.hover {
+            transform: scale(1.2);
+        }
+
+        body.custom-cursor a,
+        body.custom-cursor button,
+        body.custom-cursor #cookie-button {
+            cursor: none !important;
+        }
 
         .trail-item {
-            position: fixed; pointer-events: none; z-index: 19999;
-            width: 24px; height: 24px; animation: fadeOut 0.8s forwards;
+            position: fixed;
+            pointer-events: none;
+            z-index: 19999;
+            width: 24px;
+            height: 24px;
+            animation: fadeOut 0.8s forwards;
         }
-        .trail-item img { width: 100%; height: 100%; image-rendering: pixelated; }
+
+        .trail-item img {
+            width: 100%;
+            height: 100%;
+            image-rendering: pixelated;
+        }
 
         @keyframes fadeOut {
-            0% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-            100% { opacity: 0; transform: translate(-50%, -50%) scale(0.5) translateY(20px); }
+            0% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.5) translateY(20px);
+            }
         }
 
         /* Overstimulation Elements */
-        .random-video, .jobs-img { display: none; position: fixed; height: auto; object-fit: contain; }
-        #babyboo-video { z-index: 9998; }
-        #slime-video { z-index: 9997; }
-        #beast-video { z-index: 9996; }
-        .jobs-img { z-index: 9994; max-width: 300px; pointer-events: none; }
+        .random-video,
+        .jobs-img {
+            display: none;
+            position: fixed;
+            height: auto;
+            object-fit: contain;
+        }
+
+        #babyboo-video {
+            z-index: 9998;
+        }
+
+        #slime-video {
+            z-index: 9997;
+        }
+
+        #beast-video {
+            z-index: 9996;
+        }
+
+        .jobs-img {
+            z-index: 9994;
+            max-width: 300px;
+            pointer-events: none;
+        }
 
         #subway-pane {
-            display: none; position: fixed; right: 0; top: 0; bottom: 0;
-            width: 400px; z-index: 9995; border-left: 3px solid #fff;
+            display: none;
+            position: fixed;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 400px;
+            z-index: 9995;
+            border-left: 3px solid #fff;
         }
-        #subway-video { width: 100%; height: 100%; object-fit: cover; }
+
+        #subway-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
         #hire-me-container {
-            display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            z-index: 10000; text-align: center;
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10000;
+            text-align: center;
         }
-        .hire-text { color: red; font-size: 6rem; font-weight: 900; text-transform: uppercase; white-space: nowrap; }
-        .arrow { position: absolute; width: 180px; display: none; pointer-events: none; }
 
-        #cookie-container { display: none; position: fixed; z-index: 10001; text-align: center; width: 300px; }
+        .hire-text {
+            color: red;
+            font-size: 6rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .arrow {
+            position: absolute;
+            width: 180px;
+            display: none;
+            pointer-events: none;
+        }
+
+        #cookie-container {
+            display: none;
+            position: fixed;
+            z-index: 10001;
+            text-align: center;
+            width: 300px;
+        }
+
         #cookie-button {
-            background: none; border: none; font-size: 10rem;
-            transition: transform 0.1s; animation: pulse 2s infinite;
+            background: none;
+            border: none;
+            font-size: 10rem;
+            transition: transform 0.1s;
+            animation: pulse 2s infinite;
         }
-        #cookie-button:active { transform: scale(0.9); }
-        #cookie-count { font-weight: bold; font-size: 1.5rem; display: block; }
 
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
-        .goon-style { font-size: 5rem; font-weight: 900; display: block; line-height: 1; color: #ff00ff; }
+        #cookie-button:active {
+            transform: scale(0.9);
+        }
 
-        @media (max-width: 1024px) { #subway-pane { width: 250px; } }
+        #cookie-count {
+            font-weight: bold;
+            font-size: 1.5rem;
+            display: block;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .goon-style {
+            font-size: 5rem;
+            font-weight: 900;
+            display: block;
+            line-height: 1;
+            color: #ff00ff;
+        }
+
+        @media (max-width: 1024px) {
+            #subway-pane {
+                width: 250px;
+            }
+        }
+
         @media (max-width: 768px) {
-            nav { flex-direction: column; gap: 1rem; }
-            .nav-links { flex-direction: column; gap: 0.5rem; }
-            #cursor, #subway-pane, .trail-item { display: none; }
-            .hire-text, .goon-style { font-size: 3rem; }
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            #cursor,
+            #subway-pane,
+            .trail-item {
+                display: none !important;
+            }
+
+            /* Ensure hidden on mobile */
+            .hire-text,
+            .goon-style {
+                font-size: 3rem;
+            }
+
+            /* Mobile adjustments for chaos elements */
+            .random-video,
+            .jobs-img {
+                max-width: 150px !important;
+            }
+
+            #cookie-container {
+                width: 200px;
+            }
+
+            #cookie-button {
+                font-size: 6rem;
+            }
+
+            header,
+            main {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+
+        /* Enter Screen */
+        #enter-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            z-index: 100000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            cursor: pointer;
+            transition: opacity 0.5s ease;
+        }
+
+        #enter-screen h1 {
+            font-family: 'Courier Prime', monospace;
+            font-size: 2rem;
+            animation: blink 1s infinite;
+            user-select: none;
+        }
+
+        #enter-screen p {
+            margin-top: 1rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* Utility */
+        .hidden {
+            opacity: 0;
+            pointer-events: none;
         }
     </style>
 </head>
+
 <body>
+    <div id="enter-screen">
+        <h1>CLICK TO ENTER</h1>
+    </div>
+
     <div id="cursor"><img src="assets/diamond-sword.png"></div>
 
     <div id="hire-me-container">
@@ -135,7 +426,7 @@
     <video id="babyboo-video" class="random-video" src="assets/babyboo.mp4" loop playsinline></video>
     <video id="slime-video" class="random-video" src="assets/slime.webm" loop playsinline></video>
     <video id="beast-video" class="random-video" src="assets/beast.webm" loop playsinline></video>
-    
+
     <audio id="ding-sound" src="assets/ding.mp3"></audio>
 
     <header>
@@ -146,12 +437,21 @@
                 <a href="/personal">Personal</a>
                 <a href="/portfolio">Portfolio</a>
                 <div class="social-links">
-                    <a href="https://github.com/ivan-grebe" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    <a href="https://github.com/ivan-grebe" target="_blank" rel="noopener noreferrer"
+                        aria-label="GitHub">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path
+                                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                        </svg>
                     </a>
-                    <a href="https://x.com/Fortnite" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" class="x-icon">𝕏</a>
-                    <a href="https://www.linkedin.com/in/ivan-grebe" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    <a href="https://x.com/Fortnite" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"
+                        class="x-icon">𝕏</a>
+                    <a href="https://www.linkedin.com/in/ivan-grebe" target="_blank" rel="noopener noreferrer"
+                        aria-label="LinkedIn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                            <path
+                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                        </svg>
                     </a>
                 </div>
             </div>
@@ -166,12 +466,15 @@
                 <p>My interests include Fortnite, Arc Raiders, Looksmaxxing, gambling, inference, and poker.</p>
             </section>
             <section>
-                <blockquote><p>"Disagreement is the highest form of disrespect."</p></blockquote>
+                <blockquote>
+                    <p>"Disagreement is the highest form of disrespect."</p>
+                </blockquote>
             </section>
         </div>
     </main>
 
     <script>
+        const enterScreen = document.getElementById('enter-screen');
         const cursor = document.getElementById('cursor');
         const babyboo = document.getElementById('babyboo-video');
         const slime = document.getElementById('slime-video');
@@ -185,12 +488,22 @@
         const jobs2 = document.getElementById('jobs-2');
         const bioText = document.getElementById('bio-text');
         const ding = document.getElementById('ding-sound');
-        
+
         let customCursorEnabled = false;
-        let mouseX = 0, mouseY = 0, clicks = 0;
+        let mouseX = -100, mouseY = -100, clicks = 0;
+        let hasEntered = false;
+        let lastTrailTime = 0;
 
         function spawnTrail(x, y) {
             if (!customCursorEnabled) return;
+            // Don't spawn trails on mobile (no hover/cursor usually)
+            if (window.innerWidth <= 768) return;
+
+            // Throttle spawning
+            const now = Date.now();
+            if (now - lastTrailTime < 50) return; // Max 20 per second
+            lastTrailTime = now;
+
             const trail = document.createElement('div');
             trail.className = 'trail-item';
             trail.innerHTML = '<img src="assets/jobs.png">';
@@ -201,41 +514,151 @@
 
         function startDrift(el) {
             let vx = (Math.random() - 0.5) * 4; let vy = (Math.random() - 0.5) * 4;
-            setInterval(() => {
+
+            function animate() {
+                if (!el.isConnected) return; // Stop if removed
                 let rect = el.getBoundingClientRect();
                 let x = rect.left + vx; let y = rect.top + vy;
+
+                // Boundary checks
                 if (x <= 0 || x + rect.width >= window.innerWidth) vx *= -1;
                 if (y <= 0 || y + rect.height >= window.innerHeight) vy *= -1;
-                el.style.left = (rect.left + vx) + 'px'; el.style.top = (rect.top + vy) + 'px';
-            }, 16);
+
+                // Keep within bounds
+                if (x < 0) x = 0;
+                if (y < 0) y = 0;
+                if (x + rect.width > window.innerWidth) x = window.innerWidth - rect.width;
+                if (y + rect.height > window.innerHeight) y = window.innerHeight - rect.height;
+
+                el.style.left = x + 'px'; el.style.top = y + 'px';
+                requestAnimationFrame(animate);
+            }
+            requestAnimationFrame(animate);
         }
 
         document.addEventListener('mousemove', (e) => {
             mouseX = e.clientX; mouseY = e.clientY;
-            if (customCursorEnabled) { 
-                cursor.style.left = mouseX + 'px'; cursor.style.top = mouseY + 'px'; spawnTrail(mouseX, mouseY); 
+            if (customCursorEnabled) {
+                cursor.style.left = mouseX + 'px'; cursor.style.top = mouseY + 'px';
+                // Fix initial jump: ensure opacity is 1 only after position is set
+                cursor.style.opacity = '1';
+                spawnTrail(mouseX, mouseY);
             }
         });
 
-        const dCursor = Math.floor(Math.random() * 6001) + 3000;
-        const dBaby = Math.floor(Math.random() * 3001) + 3000;
-        const dSlime = Math.floor(Math.random() * 4001) + 8000;
-        const dSubway = Math.floor(Math.random() * 5001) + 10000;
-        const dBeast = Math.floor(Math.random() * 4001) + 14000;
-        const dHire = Math.floor(Math.random() * 5001) + 20000;
-        const dCookie = Math.floor(Math.random() * 5001) + 25000;
-        const dGoon = Math.floor(Math.random() * 5001) + 32000;
-        const dJobs1 = Math.floor(Math.random() * 4001) + 38000;
-        const dJobs2 = Math.floor(Math.random() * 5001) + 45000;
+        const startChaos = () => {
+            if (hasEntered) return;
+            hasEntered = true;
 
-        setTimeout(() => { document.body.classList.add('custom-cursor'); customCursorEnabled = true; }, dCursor);
+            // Fade out enter screen
+            enterScreen.classList.add('hidden');
+            setTimeout(() => enterScreen.remove(), 500);
 
-        const unlockAudio = () => {
-            [babyboo, slime, beast].forEach(v => { if(v.style.display === 'block') v.play(); });
-            if(subwayPane.style.display === 'block') { subway.volume = 0.5; subway.play(); }
-            window.removeEventListener('click', unlockAudio);
+            // Unlock audio
+            [babyboo, slime, beast].forEach(v => { v.muted = false; });
+
+            // Staggered Timings - enforced order
+            const dCursor = 2500; // First
+            const dBaby = 3500;   // Second
+
+            // Random delays for others
+            const dSlime = Math.floor(Math.random() * 4001) + 8000;
+            const dSubway = Math.floor(Math.random() * 5001) + 10000;
+            const dBeast = Math.floor(Math.random() * 4001) + 14000;
+            const dHire = Math.floor(Math.random() * 5001) + 20000;
+            const dCookie = Math.floor(Math.random() * 5001) + 25000;
+            const dGoon = Math.floor(Math.random() * 5001) + 32000;
+            const dJobs1 = Math.floor(Math.random() * 4001) + 38000;
+            const dJobs2 = Math.floor(Math.random() * 5001) + 45000;
+
+            setTimeout(() => {
+                if (window.innerWidth > 768) {
+                    document.body.classList.add('custom-cursor');
+                    customCursorEnabled = true;
+                    // Set initial position if mouse hasn't moved yet to avoid top-left jump
+                    if (mouseX === -100) {
+                        cursor.style.opacity = '0'; // Hide until moved
+                    } else {
+                        cursor.style.left = mouseX + 'px';
+                        cursor.style.top = mouseY + 'px';
+                    }
+                }
+            }, dCursor);
+
+            const currentActive = () => [babyboo, slime, beast, cookieCont, jobs1, jobs2];
+
+            setTimeout(() => positionUIElement(babyboo, currentActive()), dBaby);
+            setTimeout(() => positionUIElement(slime, currentActive()), dSlime);
+            setTimeout(() => positionUIElement(beast, currentActive()), dBeast);
+            setTimeout(() => {
+                if (window.innerWidth > 768) {
+                    subwayPane.style.display = 'block'; subway.volume = 0.5; subway.play().catch(() => { });
+                }
+                const s = ding.cloneNode(true); s.play().catch(() => { });
+            }, dSubway);
+
+            setTimeout(() => {
+                hireMe.style.display = 'block';
+                const arrows = hireMe.querySelectorAll('.arrow');
+                const textRect = hireMe.querySelector('.hire-text').getBoundingClientRect();
+                const textRadius = Math.max(textRect.width, textRect.height) * 0.55;
+
+                const showArrow = (index, delay) => {
+                    setTimeout(() => {
+                        const arrow = arrows[index];
+                        // Distribute arrows
+                        const angle = (index * (2 * Math.PI / 3)) + ((Math.random() * 0.5) - 0.25);
+
+                        // Push out significantly further to avoid overlap
+                        const offset = textRadius + 140;
+                        const x = Math.cos(angle) * offset;
+                        const y = Math.sin(angle) * offset;
+
+                        // Rotate to point AT center (0,0) from (x,y)
+                        // atan2(targetY - y, targetX - x) -> atan2(-y, -x)
+                        const rot = (Math.atan2(-y, -x) * (180 / Math.PI)) - 180;
+
+                        arrow.style.left = `calc(50% + ${x}px)`; arrow.style.top = `calc(50% + ${y}px)`;
+                        arrow.style.transform = `translate(-50%, -50%) rotate(${rot}deg)`;
+                        arrow.style.display = 'block';
+                        const s = ding.cloneNode(true); s.play().catch(() => { });
+                    }, delay);
+                };
+                showArrow(0, 0); showArrow(1, 600); showArrow(2, 1200);
+            }, dHire);
+
+            // Comprehensive avoid list for cookie
+            const fullAvoidList = () => [...currentActive(), hireMe, getCenterProtectionRect()];
+            setTimeout(() => positionUIElement(cookieCont, fullAvoidList(), 300), dCookie);
+
+            cookieBtn.addEventListener('click', () => { clicks++; document.getElementById('cookie-count').innerText = `Clicks: ${clicks}`; });
+            setTimeout(() => {
+                bioText.innerHTML = 'I\'m trying to understand how to <span class="goon-style">GOON!!!!!!!</span>';
+                const s = ding.cloneNode(true); s.play().catch(() => { });
+            }, dGoon);
+            setTimeout(() => positionUIElement(jobs1, fullAvoidList()), dJobs1);
+            setTimeout(() => positionUIElement(jobs2, fullAvoidList()), dJobs2);
         };
-        window.addEventListener('click', unlockAudio);
+
+        // Enter screen interaction
+        enterScreen.addEventListener('click', startChaos);
+        enterScreen.addEventListener('touchstart', (e) => {
+            e.preventDefault(); // Prevent double firing
+            startChaos();
+        }, { passive: false });
+
+
+        function getCenterProtectionRect() {
+            // Protect center 50% of screen
+            const w = window.innerWidth * 0.5;
+            const h = window.innerHeight * 0.5;
+            const l = (window.innerWidth - w) / 2;
+            const t = (window.innerHeight - h) / 2;
+            return {
+                left: l, top: t, right: l + w, bottom: t + h, width: w, height: h,
+                getBoundingClientRect: () => ({ left: l, top: t, right: l + w, bottom: t + h, width: w, height: h })
+            };
+        }
 
         function isOverlapping(r1, r2) {
             return !(r1.right < r2.left || r1.left > r2.right || r1.bottom < r2.top || r1.top > r2.bottom);
@@ -244,71 +667,59 @@
         function positionUIElement(el, avoidList, customW = null) {
             if (el.id === 'beast-video') el.volume = 0.02;
             let minW = 150;
-            if (el.id === 'beast-video') minW = window.innerWidth * 0.4;
-            if (el.id === 'slime-video') minW = window.innerWidth * 0.5;
+            // Adjust sizes for mobile
+            const isMobile = window.innerWidth <= 768;
+
+            if (el.id === 'beast-video') minW = isMobile ? window.innerWidth * 0.8 : window.innerWidth * 0.4;
+            if (el.id === 'slime-video') minW = isMobile ? window.innerWidth * 0.8 : window.innerWidth * 0.5;
             if (el.classList.contains('jobs-img')) minW = 200;
 
-            const safeMaxW = Math.min(window.innerWidth * 0.8, (window.innerHeight * 0.8) / 1.77);
+            const safeMaxW = Math.min(window.innerWidth * 0.9, (window.innerHeight * 0.8) / 1.77);
             const actualMinW = Math.min(minW, safeMaxW);
-            const rWidth = customW || (Math.floor(Math.random() * (safeMaxW - actualMinW + 1)) + actualMinW);
+
+            let rWidth = customW || (Math.floor(Math.random() * (safeMaxW - actualMinW + 1)) + actualMinW);
+            // hard cap for mobile to prevent overflow
+            if (isMobile && rWidth > window.innerWidth - 40) rWidth = window.innerWidth - 40;
+
             el.style.width = rWidth + 'px'; el.style.display = 'block';
-            
+
             const rect = el.getBoundingClientRect();
             let attempts = 0, x, y;
-            const boundaryX = window.innerWidth - (subwayPane.style.display === 'block' ? 450 : 150);
-            
+            const boundaryX = window.innerWidth - (subwayPane.style.display === 'block' ? 450 : 0); // Removed 150 offset, use 0 or margin
+
             do {
-                x = Math.floor(Math.random() * (boundaryX - rect.width));
-                y = Math.floor(Math.random() * (window.innerHeight - rect.height));
-                el.style.left = x + 'px'; el.style.top = y + 'px';
+                const maxX = window.innerWidth - rect.width;
+                const maxY = window.innerHeight - rect.height;
+                x = Math.max(0, Math.floor(Math.random() * maxX));
+                y = Math.max(0, Math.floor(Math.random() * maxY));
+
+                // Temporary positioning to test overlap
+                const tempRect = { left: x, top: y, right: x + rect.width, bottom: y + rect.height, width: rect.width, height: rect.height };
+
                 let overlap = false;
                 for (const other of avoidList) {
-                    if (window.getComputedStyle(other).display !== 'none' && isOverlapping(el.getBoundingClientRect(), other.getBoundingClientRect())) {
+                    // Check if other is a DOM element or a Rect object
+                    const otherRect = other.getBoundingClientRect ? other.getBoundingClientRect() : other;
+
+                    // If DOM element, check visibility
+                    if (other.style && window.getComputedStyle(other).display === 'none') continue;
+
+                    if (isOverlapping(tempRect, otherRect)) {
                         overlap = true; break;
                     }
                 }
-                if (!overlap) break;
-                attempts++;
-            } while (attempts < 50);
 
-            const s = ding.cloneNode(true); s.play().catch(() => {});
-            if (el.tagName === 'VIDEO') el.play().catch(() => {});
+                if (!overlap) {
+                    el.style.left = x + 'px'; el.style.top = y + 'px';
+                    break;
+                }
+                attempts++;
+            } while (attempts < 100); // Increased attempts for better fit
+
+            const s = ding.cloneNode(true); s.play().catch(() => { });
+            if (el.tagName === 'VIDEO') el.play().catch(() => { });
             if (el.classList.contains('jobs-img')) startDrift(el);
         }
-
-        const currentActive = () => [babyboo, slime, beast, cookieCont, jobs1, jobs2];
-
-        setTimeout(() => positionUIElement(babyboo, currentActive()), dBaby);
-        setTimeout(() => positionUIElement(slime, currentActive()), dSlime);
-        setTimeout(() => positionUIElement(beast, currentActive()), dBeast);
-        setTimeout(() => { 
-            subwayPane.style.display = 'block'; subway.volume = 0.5; subway.play().catch(() => {}); 
-            const s = ding.cloneNode(true); s.play();
-        }, dSubway);
-        
-        setTimeout(() => {
-            hireMe.style.display = 'block';
-            const arrows = hireMe.querySelectorAll('.arrow');
-            const showArrow = (index, delay) => {
-                setTimeout(() => {
-                    const arrow = arrows[index];
-                    const angle = (index * (2 * Math.PI / 3)) + ((Math.random() * (Math.PI / 2)) - (Math.PI / 4));
-                    const x = Math.cos(angle) * 180; const y = Math.sin(angle) * 180;
-                    const rot = (Math.atan2(-y, -x) * (180 / Math.PI)) - 180;
-                    arrow.style.left = `calc(50% + ${x}px)`; arrow.style.top = `calc(50% + ${y}px)`;
-                    arrow.style.transform = `translate(-50%, -50%) rotate(${rot}deg)`;
-                    arrow.style.display = 'block';
-                    const s = ding.cloneNode(true); s.play();
-                }, delay);
-            };
-            showArrow(0, 0); showArrow(1, 600); showArrow(2, 1200);
-        }, dHire);
-
-        setTimeout(() => positionUIElement(cookieCont, currentActive(), 300), dCookie);
-        cookieBtn.addEventListener('click', () => { clicks++; document.getElementById('cookie-count').innerText = `Clicks: ${clicks}`; });
-        setTimeout(() => { bioText.innerHTML = 'I\'m trying to understand how to <span class="goon-style">GOON!!!!!!!</span>'; const s = ding.cloneNode(true); s.play(); }, dGoon);
-        setTimeout(() => positionUIElement(jobs1, currentActive()), dJobs1);
-        setTimeout(() => positionUIElement(jobs2, currentActive()), dJobs2);
 
         document.querySelectorAll('a, button').forEach(el => {
             el.addEventListener('mouseenter', () => { if (customCursorEnabled) cursor.classList.add('hover'); });
@@ -316,4 +727,5 @@
         });
     </script>
 </body>
+
 </html>
