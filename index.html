@@ -81,6 +81,9 @@
     var startX = 0;
     var dragging = false;
 
+    Array.prototype.forEach.call(list.querySelectorAll('img'), function(img){ img.setAttribute('draggable', 'false'); });
+    list.addEventListener('dragstart', function(event){ event.preventDefault(); });
+
     function slideStep(){
       var rect = slides[0].getBoundingClientRect();
       var styles = window.getComputedStyle(slides[0]);
@@ -170,10 +173,17 @@
     list.addEventListener('touchend', end, { passive: true });
     list.addEventListener('pointerdown', function(event){
       if(event.pointerType === 'mouse' && event.button !== 0) return;
+      if(event.cancelable) event.preventDefault();
       start(event);
     });
     list.addEventListener('pointerup', end);
     list.addEventListener('pointercancel', function(){ dragging = false; goTo(activeIndex); });
+    list.addEventListener('mousedown', function(event){
+      if(event.button !== 0) return;
+      if(event.cancelable) event.preventDefault();
+      start(event);
+    });
+    window.addEventListener('mouseup', end);
     window.addEventListener('resize', function(){ goTo(activeIndex); });
 
     goTo(0);
