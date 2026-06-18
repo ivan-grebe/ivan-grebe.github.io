@@ -1,0 +1,28 @@
+{
+  "show": {
+    "name": "The Lion King (New York, NY)",
+    "date": "Tuesday June 16, 2026 7:00 PM",
+    "theatre": "Minskoff Theatre",
+    "icon": "assets/show.png"
+  },
+  "ticketType": "Standard",
+  "soldVia": "PointOfSale",
+  "tickets": [
+    {
+      "ticketId": "335621943829438111",
+      "orderId": "TGMK5NZ",
+      "section": "MEZZ",
+      "row": "G",
+      "seat": "101",
+      "qr": "assets/qr-1.png"
+    },
+    {
+      "ticketId": "490698387469323650",
+      "orderId": "TGMK5NZ",
+      "section": "MEZZ",
+      "row": "G",
+      "seat": "102",
+      "qr": "assets/qr-2.png"
+    }
+  ]
+}
