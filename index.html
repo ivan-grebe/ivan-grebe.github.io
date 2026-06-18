@@ -66,15 +66,12 @@
 iframe[data-nliven-embed]{pointer-events:none}
 .splide__track,.splide__list{touch-action:pan-y}
 .splide__list img{-webkit-user-drag:none;user-select:none}
-.nliven-mobile-menu{position:absolute;top:17px;right:24px;z-index:650;width:34px;height:28px;display:none;align-items:center;justify-content:center;background:transparent;border:0;padding:0}
+.nliven-mobile-menu{position:absolute;top:15px;right:24px;z-index:650;width:34px;height:28px;display:none;align-items:center;justify-content:center;background:transparent;border:0;padding:0}
 .nliven-mobile-menu span,.nliven-mobile-menu:before,.nliven-mobile-menu:after{content:"";display:block;position:absolute;left:0;width:34px;height:4px;border-radius:3px;background:#fff;box-shadow:0 0 1px rgba(0,0,0,.2)}
 .nliven-mobile-menu:before{top:0}.nliven-mobile-menu span{top:12px}.nliven-mobile-menu:after{top:24px}
-.nliven-wallet-badge{display:none;align-items:center;gap:7px;margin:12px auto 0;width:134px;height:40px;padding:4px 8px 4px 8px;border-radius:9px;border:1px solid #4d4d4d;background:#000;color:#fff;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;line-height:1;box-shadow:inset 0 0 0 1px rgba(255,255,255,.18);cursor:default}
-.nliven-wallet-icon{position:relative;width:28px;height:22px;flex:0 0 28px;border-radius:5px;background:#d8d8d8;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(255,255,255,.45)}
-.nliven-wallet-icon:before{content:"";position:absolute;left:3px;right:3px;top:4px;height:10px;border-radius:2px 2px 0 0;background:linear-gradient(to bottom,#4da7d9 0 22%,#66bd68 22% 43%,#f4c04e 43% 64%,#eb6c51 64% 100%)}
-.nliven-wallet-icon:after{content:"";position:absolute;left:10px;right:10px;bottom:4px;height:5px;border-radius:0 0 6px 6px;background:#eb6c51}
-.nliven-wallet-text{display:flex;flex-direction:column;align-items:flex-start;gap:1px;white-space:nowrap;letter-spacing:0;color:#fff;font-weight:400}.nliven-wallet-text-small{font-size:11px}.nliven-wallet-text-large{font-size:15px}
-@media (max-width:600px){.nliven-mobile-menu{display:flex}.nliven-wallet-badge{display:flex}}
+.nliven-wallet-badge{display:none;margin:12px auto 0;width:134px;height:auto;padding:0;border:0;background:transparent;line-height:0;cursor:default}
+.nliven-wallet-badge img{display:block;width:134px;height:auto}
+@media (max-width:600px){.nliven-mobile-menu{display:flex}.nliven-wallet-badge{display:block}}
 </style>
 <script>
 (function(){
@@ -106,7 +103,7 @@ iframe[data-nliven-embed]{pointer-events:none}
         badge.type = 'button';
         badge.className = 'nliven-wallet-badge';
         badge.setAttribute('aria-label', 'Add to Apple Wallet');
-        badge.innerHTML = '<span class="nliven-wallet-icon" aria-hidden="true"></span><span class="nliven-wallet-text"><span class="nliven-wallet-text-small">Add to</span><span class="nliven-wallet-text-large">Apple Wallet</span></span>';
+        badge.innerHTML = '<img src="assets/add-to-apple-wallet.svg" alt="Add to Apple Wallet">';
         detailsButton.insertAdjacentElement('afterend', badge);
       }
     });
