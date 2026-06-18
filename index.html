@@ -172,7 +172,7 @@
       var endX = event.changedTouches && event.changedTouches.length ? event.changedTouches[0].clientX : pointerX(event);
       var delta = (typeof endX === 'number' ? endX : lastX) - startX;
       if(Math.abs(delta) > 45){
-        goTo(activeIndex + (delta > 0 ? 1 : -1));
+        goTo(activeIndex + (delta < 0 ? 1 : -1));
       } else {
         goTo(activeIndex);
       }
